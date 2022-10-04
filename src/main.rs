@@ -1,6 +1,7 @@
 #![allow(unused)]
+
 fn main() {
-    tuple_type()
+    print_labeled_measurement(5, 'h'); // fn call
 }
 
 fn mutable_immutable() {
@@ -90,4 +91,42 @@ fn array_type() {
     let first = a[0]; // get 1
 
     let second = a[1]; // get 2
+}
+
+fn hello_world() {
+    println!("Function called - Success");
+}
+
+fn another_function(x: i32) {
+    // Function with parameter
+    println!("The value of x is: {x}");
+}
+
+fn print_labeled_measurement(value: i32, unit_label: char) {
+    // Separate the parameter declarations with commas
+    println!("The measurement is: {value}{unit_label}");
+}
+
+fn fn_with_return_val() -> i32 {
+    // You can return early from a function by using the return keyword and specifying a value, but most functions return the last expression implicitly
+    5
+}
+
+fn plus_one(x: i32) -> i32 {
+    x + 1
+}
+
+fn expression_example() {
+    let y = {
+        let x = 3;
+        x + 1
+    };
+
+    // Expression
+    // {
+    //     let x = 3;
+    //     x + 1 // do not end with semicolon
+    // }
+
+    println!("The value of y is: {y}");
 }
