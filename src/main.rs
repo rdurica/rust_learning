@@ -4,6 +4,8 @@ fn main() {
     print_labeled_measurement(5, 'h'); // fn call
 }
 
+// Variables, mutability, data types
+
 fn mutable_immutable() {
     // Mutable = can be changed
     // Immutable = no change allowed
@@ -93,6 +95,8 @@ fn array_type() {
     let second = a[1]; // get 2
 }
 
+// Functions
+
 fn hello_world() {
     println!("Function called - Success");
 }
@@ -129,4 +133,103 @@ fn expression_example() {
     // }
 
     println!("The value of y is: {y}");
+}
+
+// Control Flow
+
+fn if_example() {
+    let number = 3;
+
+    //Simple
+    if number == 3 {
+        println!("Success!");
+    }
+
+    // ff/Else
+    if number < 5 {
+        println!("True");
+    } else {
+        println!("False");
+    }
+
+    //if/elseif/else = executed first block which match condition
+    if number % 4 == 0 {
+        println!("number is divisible by 4");
+    } else if number % 3 == 0 {
+        println!("number is divisible by 3");
+    } else if number % 2 == 0 {
+        println!("number is divisible by 2");
+    } else {
+        println!("number is not divisible by 4, 3, or 2");
+    }
+
+    // Using if in a let Statement
+    let condition = true;
+    let number = if condition { 5 } else { 6 };
+}
+
+// Loops
+
+fn loop_example() {
+    // Base loop
+    loop {
+        println!("again!");
+    }
+
+    let mut counter = 0;
+
+    // Loop return value
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+
+    let mut count = 0;
+
+    // Labeled loop to Disambiguate Between Multiple Loops
+    'counting_up: loop {
+        println!("count = {count}");
+        let mut remaining = 10;
+
+        loop {
+            println!("remaining = {remaining}");
+            if remaining == 9 {
+                break;
+            }
+            if count == 2 {
+                break 'counting_up; // Break outside "named" loop
+            }
+            remaining -= 1;
+        }
+
+        count += 1;
+    }
+}
+
+fn while_example() {
+    let mut number = 3;
+
+    // While
+    while number != 0 {
+        println!("{number}");
+        number -= 1;
+    }
+    println!("LIFTOFF!!!");
+}
+
+fn for_example() {
+    let source_array = [10, 20, 30, 40, 50];
+
+    // Foreach element in array
+    for element in source_array {
+        println!("Value of element is: {element}");
+    }
+
+    // For number in range 1 - 4
+    for number in (1..4).rev() {
+        println!("{number}!");
+    }
 }
