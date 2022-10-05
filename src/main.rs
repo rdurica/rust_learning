@@ -4,6 +4,7 @@ fn main() {
     print_labeled_measurement(5, 'h'); // fn call
 }
 
+// ======================================
 // Variables, mutability, data types
 
 fn mutable_immutable() {
@@ -95,6 +96,7 @@ fn array_type() {
     let second = a[1]; // get 2
 }
 
+// ======================================
 // Functions
 
 fn hello_world() {
@@ -135,6 +137,7 @@ fn expression_example() {
     println!("The value of y is: {y}");
 }
 
+// ======================================
 // Control Flow
 
 fn if_example() {
@@ -168,6 +171,7 @@ fn if_example() {
     let number = if condition { 5 } else { 6 };
 }
 
+// ======================================
 // Loops
 
 fn loop_example() {
@@ -232,4 +236,47 @@ fn for_example() {
     for number in (1..4).rev() {
         println!("{number}!");
     }
+}
+
+// ======================================
+// References
+
+fn reference_main() {
+    let s1 = String::from("hello");
+
+    // The &s1 syntax lets us create a reference that refers to the value of s1 but does not own it. Because it does not own it, the value it points to will not be dropped when the reference stops being used.
+    let len = reference_second(&s1);
+
+    println!("the length of {s1} is {len}.");
+}
+
+fn reference_second(s: &String) -> usize {
+    // s is a reference to a String
+    // Ampersands represent reference so this method does not take over ownership
+    s.len()
+}
+
+fn mutable_reference() {
+    let mut s = String::from("hello"); // Make str mutable
+
+    mutable_change(&mut s); // mutable reference
+}
+
+//accept a mutable reference
+fn mutable_change(some_string: &mut String) {
+    some_string.push_str(", world");
+}
+
+fn multiple_mutable_references() {
+    let mut s = String::from("hello");
+
+    {
+        let r1 = &mut s; // mutable reference to s
+    } // r1 goes out of scope here, so we can make a new reference with no problems.
+
+    let r2 = &mut s;
+
+    // let r1 = &s; // no problem
+    // let r2 = &s; // no problem
+    // let r3 = &mut s; // BIG PROBLEM = error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immutable
 }
