@@ -280,3 +280,27 @@ fn multiple_mutable_references() {
     // let r2 = &s; // no problem
     // let r3 = &mut s; // BIG PROBLEM = error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immutable
 }
+
+// ======================================
+// Slice
+
+fn slice_string() {
+    let s = String::from("Hello world");
+
+    // A string slice is a reference to part of a String
+    let hello = &s[0..5];
+    let world = &s[6..11];
+
+    // these are equal. if you want to start at index zero, you can drop the value before
+    let slice = &s[0..2];
+    let slice = &s[..2];
+
+    // same but from the end of string
+    let len = s.len();
+    let slice = &s[3..len];
+    let slice = &s[3..];
+
+    // array slice
+    let a = [1, 2, 3, 4, 5];
+    let slice = &a[1..3];
+}
