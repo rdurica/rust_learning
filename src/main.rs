@@ -1,5 +1,6 @@
 #![allow(unused)]
 
+pub mod enum_example;
 pub mod structs_example;
 
 fn main() {
