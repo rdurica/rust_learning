@@ -53,3 +53,27 @@ struct AlwaysEqual;
 fn struct_without_fields() {
     let subject = AlwaysEqual;
 }
+// Struct example program
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn struct_man_example() {
+    let rect: Rectangle = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    let rect_area = calc_area(&rect);
+
+    // use {:#?} for better output
+    println!("rect1 is {:?}", rect); // with p#[derive(Debug)] you can print
+
+    dbg!(&rect); // We can use dbg! macro to print value
+}
+
+fn calc_area(rectangle: &Rectangle) -> u32 {
+    rectangle.height * rectangle.width
+}
