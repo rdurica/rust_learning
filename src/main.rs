@@ -307,3 +307,23 @@ fn slice_string() {
     let a = [1, 2, 3, 4, 5];
     let slice = &a[1..3];
 }
+
+// ======================================
+// Vectors
+
+// Similar than array but can grow. Values must be a same type
+fn vector_example() {
+    let vec1: Vec<i32> = Vec::new(); // Create an empty vector
+
+    let mut vec2: Vec<i32> = vec![0, 1, 2, 3]; //Macro create vector
+
+    vec2.push(4); // Add an item to vector
+
+    let mut first_value: &i32 = &vec2[0];
+
+    match vec2.get(1) {
+        // match
+        Some(second_value) => println!("Second value exist and it is {}", second_value),
+        None => println!("Second item does not exist"),
+    }
+}
