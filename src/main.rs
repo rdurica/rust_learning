@@ -1,10 +1,14 @@
 #![allow(unused)]
 
+use std::ops::Add;
+
 pub mod enum_example;
+mod hashmap_example;
 pub mod structs_example;
 
 fn main() {
     print_labeled_measurement(5, 'h'); // fn call
+    hashmap_example::hashmap_example();
 }
 
 // ======================================
@@ -326,4 +330,11 @@ fn vector_example() {
         Some(second_value) => println!("Second value exist and it is {}", second_value),
         None => println!("Second item does not exist"),
     }
+}
+
+// ======================================
+// Generic
+
+fn get_sum_gen<T: Add<Output = T>>(x: T, y: T) -> T {
+    return x + y;
 }
