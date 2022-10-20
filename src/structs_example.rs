@@ -77,3 +77,36 @@ fn struct_man_example() {
 fn calc_area(rectangle: &Rectangle) -> u32 {
     rectangle.height * rectangle.width
 }
+
+fn generic_struct() {
+    struct Rectangle<T, U> {
+        width: T,
+        height: U,
+    }
+    let rec1 = Rectangle {
+        width: 4,
+        height: 4.44,
+    };
+
+    struct Rectangle2 {
+        width: f32,
+        height: f32,
+    }
+
+    trait Shape {
+        fn new(length: f32, width: f32) -> Self;
+        fn area(&self) -> f32;
+    }
+
+    impl Shape for Rectangle2 {
+        fn new(height: f32, width: f32) -> Self {
+            return Rectangle2 { height, width };
+        }
+
+        fn area(&self) -> f32 {
+            todo!()
+        }
+    }
+
+    let rec2: Rectangle2 = Shape::new(10.2, 20.1);
+}
